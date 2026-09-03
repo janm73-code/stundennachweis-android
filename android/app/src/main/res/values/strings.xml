@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Stundennachweis</string>
+    <string name="widget_label">Eintrag sprechen</string>
+    <string name="widget_description">Spracheingabe für den Stundennachweis öffnen</string>
+    <string name="widget_content_description">Stundennachweis öffnen und einen Eintrag sprechen</string>
+</resources>
