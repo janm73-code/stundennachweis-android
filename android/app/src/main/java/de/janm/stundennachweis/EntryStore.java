@@ -20,10 +20,11 @@ final class EntryStore {
         prefs = context.getSharedPreferences("stundennachweis-data-v2", Context.MODE_PRIVATE);
     }
 
-    String get(LocalDate date, String slot) {
-        try { return day(date).optString(slot, ""); }
-        catch (JSONException e) { return ""; }
-    }
+    void clearDay(LocalDate date) {
+    JSONObject all = all();
+    all.remove(date.toString());
+    save(all);
+}
 
     void put(LocalDate date, String slot, String value) {
         try {
