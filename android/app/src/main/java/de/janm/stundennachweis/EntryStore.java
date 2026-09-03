@@ -19,7 +19,10 @@ final class EntryStore {
     EntryStore(Context context) {
         prefs = context.getSharedPreferences("stundennachweis-data-v2", Context.MODE_PRIVATE);
     }
-
+String get(LocalDate date, String slot) {
+    try { return day(date).optString(slot, ""); }
+    catch (JSONException e) { return ""; }
+}
     void clearDay(LocalDate date) {
     JSONObject all = all();
     all.remove(date.toString());
@@ -37,12 +40,7 @@ final class EntryStore {
         } catch (JSONException ignored) {}
     }
 
-    void clearDay(LocalDate date) {
-        try { JSONObject all = all(); all.remove(date.toString()); save(all); }
-        catch (JSONException ignored) {}
-    }
-
-    int filled(LocalDate date) {
+   int filled(LocalDate date) {
         int day = date.getDayOfWeek().getValue() - 1;
         if (day < 0 || day > 4) return 0;
         int count = 0;
